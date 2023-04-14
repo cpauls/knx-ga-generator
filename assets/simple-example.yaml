@@ -1,0 +1,26 @@
+actionGroupConfig:
+  - name: "Licht"
+    main: 1 #eine spätere Hauptgruppe
+    usedForFeatures: [ "schalten" ] #Alle 'things' eines Gebäude, die das Feature "schalten" haben, werden nachfolgende Aktionen zugewiesen. 
+    actions: [
+      { name: "schalten", middle: 1 },
+      { name: "sperren", middle: 2 },
+      { name: "status", middle: 3 },
+    ]
+building:
+  name: "Mein Haus"
+  floors:
+    - floor: "EG"
+      rooms:
+        - room: "Wohnzimmer"
+          things: [
+            { feature: "schalten", description: "Deckenleuchte links", sub: 1 },
+            { feature: "schalten", description: "Deckenleuchte mitte", sub: 2 },
+            { feature: "schalten", description: "Deckenleuchte rechts", sub: 3 },
+          ]
+        - room: "Küche"
+          things: [
+            { feature: "schalten", description: "Arbeitszeile", sub: 4 },
+            { feature: "schalten", description: "Deckenleuchte", sub: 5 },
+            { feature: "schalten", description: "Wandleuchte", sub: 6 },
+          ]

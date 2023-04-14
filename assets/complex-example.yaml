@@ -1,0 +1,64 @@
+actionGroupConfig:
+  - name: "Zentralfunktion"
+    main: 0 #eine spätere Hauptgruppe
+    usedForFeatures: [ "zentral" ] #Alle 'things' eines Gebäude, die das Feature "schalten" haben, werden nachfolgende Aktionen zugewiesen.
+    actions: [
+      { name: "schalten", middle: 1 },
+    ]
+  - name: "Licht"
+    main: 1 #eine spätere Hauptgruppe
+    usedForFeatures: [ "schalten","dimmen" ] #Alle 'things' eines Gebäude, die das Feature "schalten" haben, werden nachfolgende Aktionen zugewiesen.
+    actions: [
+      { name: "schalten", middle: 1 },
+      { name: "sperren", middle: 2 },
+      { name: "status", middle: 3 },
+      { name: "stromverbrauch", middle: 4 },
+      { name: "Nachtmododus", middle: 5 },
+    ]
+  - name: "Licht Dimmen"
+    main: 2 #eine spätere Hauptgruppe
+    usedForFeatures: [ "dimmen" ] #Alle 'things' eines Gebäude, die das Feature "schalten" haben, werden nachfolgende Aktionen zugewiesen.
+    actions: [
+      { name: "schalten", middle: 1 },
+      { name: "sperren", middle: 2 },
+      { name: "status", middle: 3 },
+    ]
+building:
+  name: "Mein Haus"
+  centralFeatures: [ "zentral" ]
+  centralSub: 0
+  floors:
+    - floor: "EG"
+      centralSub: 1
+      rooms:
+        - room: "Wohnzimmer"
+          centralSub: 10
+          things: [
+            { feature: "dimmen", description: "Deckenleuchte links", sub: 1 },
+            { feature: "schalten", description: "Deckenleuchte mitte", sub: 2 },
+            { feature: "schalten", description: "Deckenleuchte rechts", sub: 3 },
+          ]
+        - room: "Küche"
+          centralSub: 11
+          things: [
+            { feature: "schalten", description: "Arbeitszeile", sub: 4 },
+            { feature: "dimmen", description: "Deckenleuchte", sub: 5 },
+            { feature: "schalten", description: "Wandleuchte", sub: 6 },
+          ]
+    - floor: "OG"
+      centralSub: 20
+      rooms:
+        - room: "Kinderzimmer"
+          centralSub: 21
+          things: [
+            { feature: "dimmen", description: "Deckenleuchte links", sub: 7 },
+            { feature: "schalten", description: "Steckose mitte", sub: 8 },
+          ]
+        - room: "Bad"
+          centralSub: 22
+          things: [
+            { feature: "dimmen", description: "Deckenleuchte", sub: 9 },
+            { feature: "schalten", description: "Wandleuchte", sub: 10 },
+            { feature: "schalten", description: "Lüfter", sub: 11 },
+            { feature: "schalten", description: "Spiegelschrank", sub: 12 }
+            ]
