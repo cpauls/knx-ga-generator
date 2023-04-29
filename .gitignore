@@ -1,0 +1,7 @@
+/node_modules/
+/lib/
+hello.csv
+.idea
+coverage
+/src/Sandbox.ts
+/dist/

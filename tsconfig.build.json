@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "build",
+    "lib",
+    "resources",
+    "test"
+  ]
+}

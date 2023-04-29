@@ -1,0 +1,68 @@
+{
+  "name": "knx-ga-generator",
+  "version": "0.0.1",
+  "bin": "./lib/App.js",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.build.json",
+    "test": "jest",
+    "generateSchema": "ts-json-schema-generator --path src/config/Config.ts --out assets/ConfigSchema.json\n"
+  },
+  "pkg": {
+    "assets": "assets/**/*",
+    "outputPath": "dist",
+    "output": "knx-ga-generator"
+  },
+  "jest": {
+    "clearMocks": true,
+    "resetMocks": true,
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coverageReporters": [
+      "text",
+      "cobertura"
+    ],
+    "coveragePathIgnorePatterns": [
+      "!*.d.ts",
+      "/node_modules/",
+      "/test/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 85,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{js,ts}"
+    ]
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.5.0",
+    "@types/fs-extra": "^11.0.1",
+    "fs-extra": "^11.1.1",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.0.5",
+    "ts-json-schema-generator": "^1.2.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@types/js-yaml": "^4.0.5",
+    "@types/node": "^18.11.18",
+    "ajv": "^8.12.0",
+    "commander-ts": "^0.2.0",
+    "js-yaml": "^4.1.0",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.9.1"
+  }
+}

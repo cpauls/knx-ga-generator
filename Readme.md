@@ -2,6 +2,15 @@
 
 Mit diesem kleinen Tool können KNX Gruppenadressen generiert werden. Das Tool ist ein Kommandozeilenprogramm und erwartet die Definition der Gruppenadressen im yaml Format. Es gibt keine grafische Oberfläche. Gruppenadressen können sehr unterschiedlich aufgebaut sein. Dieses Tool verfolgt den Ansatz von https://smarthomebau.de/knx-ets-gruppenadressen-die-geordnete-struktur-im-einfamilienhaus/ 
 
+## TL;DR
+```bash
+1. Erzeuge eine Beispieldatei
+knx-ga-generator-macos createExample -o example.yaml
+
+2. Erzeuge aus dem Beispiel Gruppenadressen
+knx-ga-generator-<macos|linux|win> generate -s example.yaml -o gruppenadressen.csv
+```
+
 ## Einfaches Beispiel
 Zunächst wird definiert, welche Funktionen es im Gebäude gibt. In dem kleinen Beispiel kümmern wir uns um das Licht. Bei KNX kann ein Licht typischerweise geschaltet, der Lichtkanal kann gesperrt und der aktuelle Status (ein/aus) abgefragt werden.
 ```yaml
@@ -41,7 +50,7 @@ Diese [Datei](./assets/simple-example.yaml) wird in dem Beispiel unter `c:\examp
 
 Dem Tool übergebe ich folgende Parameter
 ```bash
-knx-GA-Generator-win.exe generate -s simple-example.yaml -o simple-example.csv
+knx-ga-generator-win.exe generate -s simple-example.yaml -o simple-example.csv
 ```
 Die generierte CSV Datei [simple-example.csv](/doc/simple-example.csv) wird anschließend in die ETS importiert:
 ![simple Example](./doc/simple-exampleETS.png "Optional title")

@@ -19,9 +19,15 @@ actionGroupConfig:
     main: 2 #eine spätere Hauptgruppe
     usedForFeatures: [ "dimmen" ] #Alle 'things' eines Gebäude, die das Feature "schalten" haben, werden nachfolgende Aktionen zugewiesen.
     actions: [
-      { name: "schalten", middle: 1 },
-      { name: "sperren", middle: 2 },
-      { name: "status", middle: 3 },
+      { name: "Dimmen relativ", middle: 1 },
+      { name: "Dimmen absolut", middle: 2 },
+      { name: "Status Dimmwert",  middle: 3 }
+    ]
+  - name: "Lichtfarbe"
+    main: 3 #eine spätere Hauptgruppe
+    usedForFeatures: [ "lichtfarbe" ] #Alle 'things' eines Gebäude, die das Feature "schalten" haben, werden nachfolgende Aktionen zugewiesen.
+    actions: [
+      { name: "Farbtemperatur", middle: 1 },
     ]
 building:
   name: "Mein Haus"
@@ -34,7 +40,7 @@ building:
         - room: "Wohnzimmer"
           centralSub: 10
           things: [
-            { feature: "dimmen", description: "Deckenleuchte links", sub: 1 },
+            { feature: ["dimmen", "lichtfarbe"], description: "Deckenleuchte links", sub: 1 }, # one special light with tuneablewhite
             { feature: "schalten", description: "Deckenleuchte mitte", sub: 2 },
             { feature: "schalten", description: "Deckenleuchte rechts", sub: 3 },
           ]
