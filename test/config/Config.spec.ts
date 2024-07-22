@@ -93,7 +93,7 @@ describe("test add function", () => {
                 }
             }
             spyobject.mockReturnValue(JSON.stringify(testdata));
-            parser = new ConfigParser(new ActionGroupService())
+            parser = new ConfigParser(new ActionGroupService(), ' ')
             building = parser.parse("return mocked values")
         }
     )

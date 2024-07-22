@@ -13,6 +13,7 @@ export class Entity extends ObjectPart implements Actions {
                 public readonly description: string,
                 public readonly actionGroups: ActionGroup[],
                 private readonly belongsToRoom: Room,
+                private readonly seperator: string
     ) {
         super();
     }
@@ -30,7 +31,7 @@ export class Entity extends ObjectPart implements Actions {
     }
 
     get fullDescription() {
-        return `${this.floor} ${this.room} ${this.description}`
+        return `${this.floor}${this.seperator}${this.room}${this.seperator}${this.description}`
     }
 
 
