@@ -4,9 +4,8 @@ import {Generator} from "./Generator";
 import {Command} from "commander-ts";
 
 
-
 const application = new Command();
-application.version('0.0.1').description('Generate GA Adresses')
+application.version('0.0.2').description('Generate GA Adresses')
 
 const generate = new Command('generate')
 
@@ -14,11 +13,13 @@ generate.alias('g')
     .description('Description of generate')
     .requiredOption('-s, --sourceFile <value>', 'This is a required option')
     .requiredOption('-o, --outFile <value>', 'This is a required option', "file.csv")
+    .requiredOption('-d, --delimiter <value>', `Specify seperator between naming generation`, " ")
     .action(
-        async (options: { sourceFile: string; outFile: string; }) => {
+        async (options: { sourceFile: string; outFile: string; seperator: string }) => {
             const source: string = options.sourceFile
             const destination: string = options.outFile
-            await new Generator().generate(source, destination)
+            const seperator: string = options.seperator
+            await new Generator().generate(source, destination, seperator)
         }
     )
 application.addCommand(generate)

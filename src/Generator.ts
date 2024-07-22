@@ -12,11 +12,11 @@ export class Generator {
 
     static readonly DEFAULT_CONFIG_FILE = 'simple-example.yaml'
 
-    public async generate(source: string, destination: string) {
+    public async generate(source: string, destination: string, seperator: string) {
         // move to IOC
         const actionGroupService = new ActionGroupService()
-        const configParser = new ConfigParser(actionGroupService)
-        const exporter = new KnxExporter()
+        const configParser = new ConfigParser(actionGroupService,seperator)
+        const exporter = new KnxExporter(seperator)
 
 
         const sourceFile = path.resolve(source)

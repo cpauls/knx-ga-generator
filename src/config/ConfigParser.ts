@@ -10,7 +10,7 @@ import {Entity} from "../domain/Actions";
 
 
 export class ConfigParser {
-    constructor(private readonly actionGroupService: ActionGroupService) {
+    constructor(private readonly actionGroupService: ActionGroupService, private readonly seperator: string) {
     }
 
     parse(file: string): Building {
@@ -55,7 +55,7 @@ export class ConfigParser {
 
     private createEntityFromThing(thing: ThingsConfig, belongsTo: Room): Entity {
         const actionGroups = this.actionGroupService.getGroupsForFeatures(thing.feature)
-        return new Entity(thing.sub, thing.description, actionGroups, belongsTo)
+        return new Entity(thing.sub, thing.description, actionGroups, belongsTo, this.seperator)
     }
 
 

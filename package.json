@@ -1,6 +1,6 @@
 {
   "name": "knx-ga-generator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "bin": "./lib/App.js",
   "scripts": {
     "build": "tsc -p ./tsconfig.build.json",

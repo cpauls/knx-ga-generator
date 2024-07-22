@@ -7,6 +7,10 @@ import {Actions} from "../domain/Actions";
 import {SubAddress} from "./SubAddress";
 
 export class KnxExporter {
+    constructor(private readonly seperator: string) {
+        
+    }
+
 
     addresses: Map<string, GroupAddress> = new Map<string, GroupAddress>()
 
@@ -42,7 +46,7 @@ export class KnxExporter {
             for (const actionGroup of action.actionGroups) {
                 for (const actionPart of actionGroup.getActionParts()) {
 
-                    const sub = new SubAddress(actionGroup.main, actionPart.middle, action.sub, `${action.fullDescription} ${actionPart.action}`)
+                    const sub = new SubAddress(actionGroup.main, actionPart.middle, action.sub, `${action.fullDescription}${this.seperator}${actionPart.action}`)
                     if (!this.addresses.has(sub.middleId)) {
                         throw new Error(`Entity does not belong to any Middlegroup: ${sub.toCSV()}`)
                     }
